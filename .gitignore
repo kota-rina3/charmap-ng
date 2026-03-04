@@ -1,0 +1,32 @@
+```
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Test coverage reports
+.coverage
+htmlcov/
+.coverage.*
+
+# Python virtual environments
+venv/
+.venv/
+.env
+.env.local
+*.env.*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
+
+# Distribution artifacts
+dist/
+build/
+*.egg-info/
+```
