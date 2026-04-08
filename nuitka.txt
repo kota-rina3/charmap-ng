@@ -1,0 +1,1 @@
+nuitka --onefile --standalone --windows-console-mode=disable --windows-icon-from-ico=./ui/charmap.ico --show-progress --lto=yes --jobs=4 --enable-plugins=pyqt6 --include-data-dir=./ui=./ui charmap-ng.py
