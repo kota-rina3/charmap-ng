@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
-from PyQt6.QtWidgets import (QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QMessageBox)
-from PyQt6.QtGui import QIcon, QFont, QFontDatabase, QGuiApplication
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QMessageBox
+from PyQt6.QtGui import QIcon, QFont, QFontDatabase, QGuiApplication, QDesktopServices
+from PyQt6.QtCore import Qt, QTimer, QUrl
 from PyQt6.uic import loadUi
 import sys,os,unicodedata
 
@@ -49,6 +49,7 @@ class CharMapNG(QMainWindow):
         self.fontChoice.setEditable(False)
 
         self.help.setText("帮助(H)")
+        self.help.clicked.connect(self.jump_help)
 
         self.fontMap.setColumnCount(int(10)) # 创建字符表格
         self.fontMap.setRowCount(0)
@@ -109,6 +110,9 @@ class CharMapNG(QMainWindow):
 
         default_font = QFont(self.fontChoice.currentText(), 16)
         self.fontMap.setFont(default_font)
+
+    def jump_help(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/kota-rina3/charmap-ng"))
 
     def populate_fonts(self):
         """填充字体列表"""
@@ -314,6 +318,7 @@ class CharMapNG(QMainWindow):
 
 if __name__ == '__main__':
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    os.environ['QT_QPA_PLATFORM'] = 'xcb' 
     app = QApplication(sys.argv)
     window = CharMapNG()
     window.show()
